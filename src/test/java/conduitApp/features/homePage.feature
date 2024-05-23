@@ -1,8 +1,10 @@
+@homePage
 Feature: Home Page tests
 
 Background:
     * url 'https://conduit-api.bondaracademy.com/api' 
 
+@getAllTags    
 Scenario: Get all tags
     Given path 'tags'
     When method GET
@@ -11,6 +13,7 @@ Scenario: Get all tags
     And match response.tags == '#[10]'
     And match response.tags contains ['Test','Coding','Bondar Academy','Git','Zoom','YouTube','GitHub','qa career','Collaboration','Value-Focused']
 
+@getArticles
 Scenario: Get the first 5 articles
     Given path 'articles'
     And param limit = 5

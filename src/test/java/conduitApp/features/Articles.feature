@@ -1,3 +1,4 @@
+@articles
 Feature: Articles
 
 Background: 
@@ -9,7 +10,8 @@ Background:
     Then status 200
      * def token = response.user.token
 
-Scenario: Create Article
+    @createAndDeleteArticle
+    Scenario: Create Article
     Given header Authorization = "Token " + token
     And path 'articles'
     When request read('createArticle.json')
