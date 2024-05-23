@@ -3,18 +3,23 @@ Feature: Articles
 
 Background: 
     * url 'https://conduit-api.bondaracademy.com/api' 
+    * def authTokenResponse = callonce read('classpath:conduitApp/utils/AuthToken.feature')
+    * def token = authTokenResponse.authToken
+    * def createArticleBody = read('classpath:conduitApp/resources/createArticle.json')
 
-    Given path 'users/login'
-    And request {"user": {"email": "karateEmail@email.com","password": "karate123" }}
-    When method POST
-    Then status 200
-     * def token = response.user.token
-
-    @createAndDeleteArticle
-    Scenario: Create Article
+@createArticle
+Scenario: Create Article
     Given header Authorization = "Token " + token
     And path 'articles'
-    When request read('createArticle.json')
+    When request {"article":{"title":"bla title","description":"bla bla","body":"some more bla","tagList":["bla","bla bla"]}}
+    And method POST
+    Then status 201
+
+    @createAndDeleteArticle
+    Scenario: Create and Delete Article
+    Given header Authorization = "Token " + token
+    And path 'articles'
+    When request createArticleBody
     And method POST
     Then status 201
     * def slug = response.article.slug
