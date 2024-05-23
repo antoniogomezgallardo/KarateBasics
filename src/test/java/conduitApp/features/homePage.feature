@@ -2,7 +2,7 @@
 Feature: Home Page tests
 
 Background:
-    * url 'https://conduit-api.bondaracademy.com/api' 
+    * url apiUrl 
 
 @getAllTags    
 Scenario: Get all tags
