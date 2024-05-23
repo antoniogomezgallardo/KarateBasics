@@ -3,7 +3,7 @@ Feature: Articles
 
 Background: 
     * url 'https://conduit-api.bondaracademy.com/api' 
-    * def authTokenResponse = callonce read('classpath:conduitApp/utils/AuthToken.feature')
+    * def authTokenResponse = callonce read('classpath:conduitApp/utils/AuthToken.feature') {"email": "karateEmail@email.com","password": "karate123" }
     * def token = authTokenResponse.authToken
     * def createArticleBody = read('classpath:conduitApp/resources/createArticle.json')
 
