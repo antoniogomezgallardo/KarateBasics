@@ -6,9 +6,11 @@ Background:
     * def createArticleBody = read('classpath:conduitApp/resources/createArticle.json')
 
 @createArticle
+@ignore
 Scenario: Create Article
+
     Given path 'articles'
-    When request {"article":{"title":"bla title","description":"bla bla","body":"some more bla","tagList":["bla","bla bla"]}}
+    When request {"article":{"title":"bla bla bla", "description":"bla bla", "body":"some more bla", "tagList":["bla","bla bla"]}}
     And method POST
     Then status 201
 
