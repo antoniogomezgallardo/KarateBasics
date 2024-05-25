@@ -9,3 +9,6 @@
 
 - Run tests for a different envirionment: mvn clean test -Dkarate.env="ENVIRONMENT_NAME"
 
+# Schema validation
+- https://github.com/karatelabs/karate/blob/master/karate-core/src/test/java/com/intuit/karate/core/schema-like.feature
+

@@ -15,6 +15,10 @@ Scenario: Get all tags
 
 @getArticles
 Scenario: Get the first 5 articles
+
+    * def responseSchema = read("classpath:conduitApp/resources/articlesSchema.json")
+    * def timeValidator = read("classpath:conduitApp/utils/timeValidator.js")
+
     Given path 'articles'
     And param limit = 5
     And param offset = 0
@@ -22,5 +26,6 @@ Scenario: Get the first 5 articles
     Then status 200
     And match response.articles == '#array'
     And match response.articles == '#[5]'
-    And match response.articlesCount == 10
+    And match response.articlesCount == 11
+    And match each response.articles == responseSchema
 
